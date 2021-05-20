@@ -1,2 +1,2 @@
 # BlueModas.Angular
-Front End de uma loga Ficticia BlueModas
+Front End de uma loja Ficticia BlueModas
