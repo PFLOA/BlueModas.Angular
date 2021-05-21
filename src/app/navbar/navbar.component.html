@@ -1,0 +1,78 @@
+<div class="container-fluid p-3" style="background-color: #A0DDDD;">
+  <div class="row">
+    <div class="col-1">
+      <a class="navbar-brand d-none d-sm-block flex-shrink-0 align-items-center
+        font-weight-bold" href="#">BLUE
+        MODAS</a>
+    </div>
+    <div class="col-6">
+      <div class="input-group d-none d-lg-flex mx-4">
+        <input type="text" class="form-control rounded-end pe-5"
+          placeholder="Nome do Produto">
+        <i class="fas fa-search position-absolute top-50 end-0
+          translate-middle-y text-muted fs-base me-3"></i>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center
+        justify-content-center">
+        <a class="navbar-tool d-flex ms-1 ms-lg-0 me-n1 me-lg-2
+          align-items-center text-decoration-none slide-fwd-center" href="#">
+          <div class="navbar-tool-icon-box icon-cart border-cart p-2">
+            <i class="navbar-tool-icon far fa-user-circle icone"></i>
+          </div>
+          <div class="navbar-tool-text ms-n3 align-items-center mx-3
+            tamanho-fonte">
+            <small>Olá, Entrar</small><br>
+            Minha Conta
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="navbar-toolbar d-flex flex-shrink-0 dropdown
+        align-items-center justify-content-center dropbtn">
+        <a class="mx-3">
+          <div class="border-cart icon-cart p-1">
+            <i class="fas fa-shopping-cart p-2" [matBadge]="carrinho.totalItens"
+              matBadgePosition="after" matBadgeSize="medium"
+              matBadgeColor="accent"></i>
+          </div>
+        </a>
+        <a href="#" class="navbar-tool-text text-decoration-none tamanho-fonte">
+          <small>Carrinho</small><br>
+          <small *ngIf="carrinho;">R$ </small><strong>{{ carrinho.total |
+            number: '1.0-2' }}</strong>
+        </a>
+        <div class="dropdown-content">
+          <div class="card" *ngIf="carrinho.itemVenda.length > 0">
+            <div class="card-body" style="width:400px;" *ngFor="let item of
+              carrinho.itemVenda">
+              <div class="d-flex" style="position: relative;">
+                <button type="button" (click)="removeCart(item)" class="btn btn-remove-cart"><i class="fas
+                    fa-times" style="color: rgb(190, 70, 49);"></i></button>
+                <div class="d-flex align-items-center">
+                  <img [src]="item.produto.imagem" width="64">
+                  <div class="ps-2">
+                    <h6 class="card-title">{{item.produto.nome}}</h6>
+                    <p style="color: #35B1EB;">{{item.produto.preco | currency :
+                      'R$'}} x <small>{{item.quantidade}}</small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="my-4 mx-2">
+              <h6>Subtotal: <small *ngIf="carrinho;">R$ </small><strong>{{ carrinho.total |
+                number: '1.0-2' }}</strong></h6>
+            </div>
+            <hr class="my-3">
+            <div class="d-flex">
+              <a class="btn m-2 container-fluid" (click)="addCarrinhoService()" [routerLink]="['/checkout']" style="background-color: #FE696A;">Checkout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

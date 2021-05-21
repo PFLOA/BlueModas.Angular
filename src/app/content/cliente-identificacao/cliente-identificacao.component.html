@@ -1,0 +1,17 @@
+<pfloa-navbar [carrinho]="cart"></pfloa-navbar>
+
+<div class="container my-5">
+    <div class="form-group">
+        <label>Nome</label>
+        <input [(ngModel)]='nome' type="text" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>E-mail</label>
+        <input [(ngModel)]='email' type="text" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Telefone</label>
+        <input [(ngModel)]="telefone" type="text" class="form-control">
+    </div>
+    <a type="button" (click)="salvarVenda()" class="btn btn-primary my-2">Finalizar</a>
+</div>

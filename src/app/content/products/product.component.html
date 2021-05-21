@@ -1,0 +1,28 @@
+<pfloa-navbar [carrinho]="cart"></pfloa-navbar>
+<mat-toolbar class="app-title text-center justify-content-center"
+  style="background-color: #6A9393;">
+  <h3>Principais Produtos</h3>
+</mat-toolbar>
+
+<div class="home-content row mx-1 my-3" *ngIf="produtos.length; else semRegistro">
+  <div class="col-4 my-2" *ngFor="let produto of produtos">
+    <mat-card class="home-card" style="background-color: darkgray;">
+      <a href="" class="text-decoration-none home-card-border">
+        <img mat-card-image [src]="produto.imagem">
+        <mat-card-header>
+          <mat-card-title>{{produto.nome}}</mat-card-title>
+          <mat-card-subtitle>{{produto.preco | currency : 'R$' }}</mat-card-subtitle>
+        </mat-card-header>
+      </a>
+      <mat-card-actions>
+        <button type="button" class="btn container-fluid button-add-cart"
+          style="background-color: #abcfcf;" (click)="addToCart(produto)">Add
+          carrinho</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
+<ng-template #semRegistro>
+  <h1 class="full-width main-div">Nenhum registro encontrado!</h1>
+</ng-template>
